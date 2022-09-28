@@ -8,3 +8,4 @@ Contact:
 
 * miguel.buitrago.kommit@gmail.com
 
+* https://www.linkedin.com/in/miguelbuitrago
