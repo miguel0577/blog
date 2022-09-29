@@ -1,24 +1,11 @@
-# README
+# KOMMIT BOOTCAMP BLOG
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my first blog created in Ruby on Rails for Kommit Bootcamp
 
-Things you may want to cover:
+This blog is developed by Miguel Buitrago
 
-* Ruby version
+Contact:
 
-* System dependencies
+* miguel.buitrago.kommit@gmail.com
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* https://www.linkedin.com/in/miguelbuitrago
