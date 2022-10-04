@@ -51,7 +51,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-
 end
 
 group :development do
@@ -73,6 +72,6 @@ group :test do
 end
 
 group :production do
-  # Use postgreSQL as the database for Active Record
+  # Use postgreSQL as the database for Heroku
   gem 'pg', '~> 1.4.3'
 end
