@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Controller to show, add, edit, update and delete articles
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: "a", password: "", except: [:index, :show]
+  http_basic_authenticate_with name: 'a', password: '', except: %i[index show]
 
   def index
     @articles = Article.all
@@ -45,7 +48,8 @@ class ArticlesController < ApplicationController
   end
 
   private
-    def article_params
-      params.require(:article).permit(:title, :body, :status)
-    end
+
+  def article_params
+    params.require(:article).permit(:title, :body, :status)
+  end
 end
