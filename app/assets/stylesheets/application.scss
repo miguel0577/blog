@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+@import "./header.scss";
+@import "./main.scss";
+@import "./footer.scss";
+$-font-family: 'Roboto', sans-serif;
+$back-color: #06121B;
+$font-color: #C0D2E5;
+
+body{
+  background-color: $back-color;
+  color: $font-color;
+  font-family: $-font-family
+}

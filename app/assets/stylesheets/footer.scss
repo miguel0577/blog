@@ -1,0 +1,17 @@
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
+#author{
+  background-color: #000d1a;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding-right: 20px;
+  a{
+    margin-left: 15px;
+  }
+}
