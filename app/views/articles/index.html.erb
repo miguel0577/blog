@@ -9,6 +9,15 @@
   <body>
     <header class="container-xxl text-center" id="header">
 
+      <div class="row log-option">
+        <%if user_signed_in? %>
+          <a class="btn btn-outline-primary" id="log-button" href="<%= destroy_user_session_path %>">Sign Out</a>
+        <% else %>
+          <a class="btn btn-outline-primary" id="log-button" href="<%= new_user_session_path %>">Login</a>
+          <a class="btn btn-outline-primary" id="log-button" href="<%= new_user_registration_path %>">Sign Up!</a>
+        <% end %>
+      </div>
+
       <div class="row">
         <h1>New awesome blog!</h1>
       </div>
@@ -24,7 +33,9 @@
       
     <main class="container" id="main">
 
-        <a class="btn btn-outline-primary" id="new-link" href="<%= new_article_path %>">New article</a>
+        <%if user_signed_in? %>
+          <a class="btn btn-outline-primary" id="new-link" href="<%= new_article_path %>">New article</a>
+        <% end %>
   
         <% @articles.each do |article| %>
           <% unless article.archived? %>

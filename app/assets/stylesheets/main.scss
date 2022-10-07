@@ -5,9 +5,22 @@ body{
   position: relative;
   padding-bottom: 70px;
   min-height: 100vh;
+
+  .notice{
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .alert{
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 }
 
 main{
+  margin-top: 0;
+  padding-top: 0;
+
   .label-tittle-article{
     padding-top: 20px;
     padding-bottom: 20px;
@@ -15,6 +28,7 @@ main{
   .error-body-article{
     color: #ff0000;
   }
+
   .label-select-article{
     padding-bottom: 20px;
   }
@@ -27,6 +41,13 @@ main{
   display: flex;
   align-items: center;
   padding-left: 20px;
+}
+
+#log-button{
+  width: 120px;
+  height: 40px;
+  font-size: 20px;
+  margin-left: 15px;
 }
 
 #card-articles{

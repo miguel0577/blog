@@ -1,5 +1,6 @@
 #header{
-  padding-top: 50px;
+  padding-top: 0px;
+  margin-top: 0px;
 
   h1{
     color: #c2ab6c;
@@ -11,4 +12,11 @@
     padding-top: 20px;
     font-size: 45px;
   }
-}
+
+  .log-option{
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 20px;
+  }
+} 

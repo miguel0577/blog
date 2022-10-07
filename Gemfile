@@ -53,6 +53,9 @@ gem 'bootstrap', '~> 5.2.1'
 # Use RuboCop to analyze static code
 gem 'rubocop', '~> 1.36', require: false
 
+# Use device to user authentication
+gem 'devise', '~> 4.8', '>= 4.8.1'
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3', '~> 1.4'
