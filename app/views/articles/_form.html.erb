@@ -32,14 +32,15 @@
 
         <div class="label-select-article">
           <%= form.label :status %><br>
-          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', id: "select-article" %>
+          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
         </div>
 
         <div class="label-submit-article">
+          <% form.select :owner, [current_user.id] %>
           <%= form.submit %>
         </div>
-      <% end %>
-         
+        
+      <% end %>         
     </main>
 
     <footer>
