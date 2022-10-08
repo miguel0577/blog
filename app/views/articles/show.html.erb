@@ -9,6 +9,7 @@
   <body>
 
     <h1><%= @article.title %></h1>
+    <p><%= @article.body %></p>
 
     <% if user_signed_in?  %>
       <% if @article.owner == current_user.id %>
@@ -22,10 +23,9 @@
       <% end  %>
     <% end  %>
 
-    <h2>Comments</h2>
+    <h4>Comments</h4>
     <%= render @article.comments %>
 
-    <h2>Add a comment:</h2>
     <%= render 'comments/form' %>
 
   </body>
