@@ -31,10 +31,11 @@
 
     </header>
       
-    <main class="container" id="main">
+    <main id="main">
 
+      <div class="show-articles">
         <%if user_signed_in? %>
-          <a class="btn btn-outline-primary" id="new-link" href="<%= new_article_path %>">New article</a>
+          <a class="btn btn-outline-primary" id="new-button" href="<%= new_article_path %>">New article</a>
         <% end %>
   
         <% @articles.each do |article| %>
@@ -48,7 +49,21 @@
             </div>     
           <% end %>
         <% end %>
-         
+      </div>
+
+        <%if user_signed_in? %>
+          <div class="show-users">
+          <h4>Bloggers!</h4>
+            <% @users.each do |user| %>
+              <div class="card" id="card-users" >
+                <div class="card-body">
+                  <h5 class="card-title"> <%= user.email %> </h5>
+                </div>
+              </div>     
+            <% end %>
+          </div>
+        <% end %>
+
     </main>
 
     <footer>
