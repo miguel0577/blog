@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
+# Controller to show, add, edit, update and delete comments
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: "a", password: "", only: :destroy
+  http_basic_authenticate_with name: 'a', password: '', only: :destroy
 
   def create
     @article = Article.find(params[:article_id])
@@ -15,7 +18,8 @@ class CommentsController < ApplicationController
   end
 
   private
-    def comment_params
-      params.require(:comment).permit(:commenter, :body, :status)
-    end
+
+  def comment_params
+    params.require(:comment).permit(:commenter, :body, :status)
+  end
 end

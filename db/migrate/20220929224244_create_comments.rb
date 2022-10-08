@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# class to create comments in the database with the commenter and body tables
 class CreateComments < ActiveRecord::Migration[7.0]
   def change
     create_table :comments do |t|
