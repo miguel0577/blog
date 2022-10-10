@@ -2,12 +2,13 @@
 
 # Controller to show, add, edit, update and delete articles
 class ArticlesController < ApplicationController
-
+  
   def index
     @articles = Article.all
     @users = User.all
+    @followers = Follower.all
   end
-
+  
   def show
     @article = Article.find(params[:id])
   end

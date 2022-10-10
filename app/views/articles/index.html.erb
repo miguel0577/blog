@@ -53,11 +53,25 @@
 
         <%if user_signed_in? %>
           <div class="show-users">
-          <h4>Bloggers!</h4>
+            <h4>Bloggers!</h4>
+            <p>You are <%= current_user.email %></p>
             <% @users.each do |user| %>
               <div class="card" id="card-users" >
                 <div class="card-body">
                   <h5 class="card-title"> <%= user.email %> </h5>
+                    <% unless current_user.id == user.id %>
+                      <%= form_for Follower.new do |form| %>
+                        <%= form.submit "Follow", class: "btn btn-primary"%>
+                        <%= form.select :user_id, [current_user.id]%>
+                        <%= form.select :id_follower, [user.id]%>
+                      <% end %>
+                      <% @followers.each do |follower| %>
+                        <% if follower.id_follower == user.id %>
+                          <!-- Unfollow button temporal (Don´t work) -->
+                          <a class="btn btn-primary">Unfollow</a>
+                        <% end %>
+                      <% end %>
+                    <% end %>
                 </div>
               </div>     
             <% end %>
