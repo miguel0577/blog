@@ -62,8 +62,8 @@
                     <% unless current_user.id == user.id %>
                       <%= form_for Follower.new do |form| %>
                         <%= form.submit "Follow", class: "btn btn-primary"%>
-                        <%= form.select :user_id, [current_user.id]%>
-                        <%= form.select :id_follower, [user.id]%>
+                        <%= form.hidden_field :user_id, value: current_user.id %>
+                        <%= form.hidden_field :id_follower, value: user.id %>
                       <% end %>
                       <% @followers.each do |follower| %>
                         <% if follower.id_follower == user.id %>
