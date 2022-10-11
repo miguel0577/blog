@@ -6,11 +6,12 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @users = User.all
-    @followers = Follower.all
   end
   
   def show
     @article = Article.find(params[:id])
+    @user = User.find(@article.owner)
+    @rel = @user.followers.find_by(follower: current_user)
   end
 
   def new
