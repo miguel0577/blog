@@ -10,9 +10,11 @@
 
     <h1><%= @article.title %></h1>
     <p><%= @article.body %></p>
+    <p>Created at: <%= @article.created_at %></p>
+    <p>Author: <%= @user.email %></p>
 
     <% if user_signed_in?  %>
-      <% if @article.owner == current_user.id %>
+      <% if @current_user_owner %> 
         <ul>
           <li><%= link_to "Edit", edit_article_path(@article) %></li>
           <li><%= link_to "Destroy", article_path(@article), data: {

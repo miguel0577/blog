@@ -55,6 +55,8 @@
           <div class="show-users">
             <h4>Bloggers!</h4>
             <p>You are <%= current_user.email %></p>
+            <p>Followers: <%= current_user.followers.count %></p>
+            <p>Following: <%= current_user.following.count %></p>
             <% @users.each do |user| %>
               <% unless current_user.id == user.id %>
                 <div class="card" id="card-users" >

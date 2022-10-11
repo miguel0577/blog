@@ -12,6 +12,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @user = User.find(@article.owner)
     @rel = @user.followers.find_by(follower: current_user)
+    
+    if @article.owner == current_user.id
+      @current_user_owner = true
+    else
+      @current_user_owner = false
+    end
   end
 
   def new

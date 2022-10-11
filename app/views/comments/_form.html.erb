@@ -1,6 +1,6 @@
 
 <% if user_signed_in?  %>
-  <% if @rel.present? %>
+  <% if (@rel.present? || @current_user_owner) %> 
     <h4>Add a comment:</h4>
     <%= form_with model: [ @article, @article.comments.build ] do |form| %>
       <p>
