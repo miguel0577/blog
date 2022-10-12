@@ -1,0 +1,22 @@
+@mixin display-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#log-sign{
+  padding-top: 20vh;
+  height: 100%;
+  @include display-center();
+  h1{
+    padding-bottom: 5vh;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: bolder
+  }
+  .form-group-2{
+    @include display-center();
+    .btn{
+      margin: 2vh 0;
+    }
+  }
+}

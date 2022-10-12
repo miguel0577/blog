@@ -1,25 +1,35 @@
-
 <% if user_signed_in?  %>
-  <% if (@rel.present? || @current_user_owner) %> 
+  <% if (@rel.present? || @current_user_owner_article) %> 
+    <div id="form">
     <h4>Add a comment:</h4>
-    <%= form_with model: [ @article, @article.comments.build ] do |form| %>
-      <p>
-        <%= form.label :commenter %><br>
-        <%= form.text_field :commenter %>
-      </p>
-      <p>
-        <%= form.label :body %><br>
-        <%= form.text_area :body %>
-      </p>
-      <p>
-        <%= form.label :status %><br>
-        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-      </p>
-      <p>
-        <%= form.submit %>
-      </p>
-    <% end %>
+      <div class="col">
+        <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+
+          <div class="label-tittle-article-comment">
+            <%= form.label :commenter %><br>
+              <%= form.hidden_field :commenter, value: current_user.email %>
+              <%= current_user.email %>
+          </div>
+
+          <div class="label-body-article-comment">
+            <%= form.label :body %><br>
+            <%= form.text_area :body, class: "form-control" %>
+          </div>
+
+          <div class="label-select-article-comment">
+            <%= form.label :status %><br>
+            <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-select" %>
+          </div>
+
+          <div class="label-submit-article-comment">
+            <button class="btn btn-success" type="submit">Publish comment</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
   <% else %>
-    <h6>Follow <%= @user.email %> to add a comment</h6>
+    <div class="row-center">
+      <h6>Follow <%= @user.email %> to add a comment</h6>
+    </div>
   <% end %>
 <% end %>

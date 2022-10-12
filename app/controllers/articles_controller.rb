@@ -6,6 +6,9 @@ class ArticlesController < ApplicationController
   def index
     @articles = Article.all
     @users = User.all
+    if user_signed_in?
+      @user_now = User.find(current_user.id)
+    end
   end
   
   def show
@@ -13,10 +16,8 @@ class ArticlesController < ApplicationController
     @user = User.find(@article.owner)
     @rel = @user.followers.find_by(follower: current_user)
     
-    if @article.owner == current_user.id
-      @current_user_owner = true
-    else
-      @current_user_owner = false
+    if user_signed_in?
+      @current_user_owner_article = true if @article.owner == current_user.id
     end
   end
 

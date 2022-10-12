@@ -1,7 +1,15 @@
-<%= @user.email %>
+<div id="show-user-profile">
+      <img src="https://img.icons8.com/external-sbts2018-outline-sbts2018/100/000000/external-profile-seo-4.-1-sbts2018-outline-sbts2018.png"/>
 
-<%= link_to "Follow", user_relationships_create_path(@user), method: :post, class: 'btn btn-danger' unless @rel.present? %>
-<%= link_to "Unfollow", relationships_destroy_path(@rel.id), method: :delete, class: 'btn btn-danger' if @rel.present? %>
+      <p class="user-email"><%= @user.email %></p>
 
-<h2>Followers: <%= @user.followers.count %></h2>
-<h2>Following: <%= @user.following.count %></h2>
+      <% unless @actual_current_user %>
+        <%= link_to "Follow", user_relationships_create_path(@user), method: :post, class: 'btn btn-success' unless @rel.present? %>
+        <%= link_to "Unfollow", relationships_destroy_path(@rel.id), method: :delete, class: 'btn btn-danger' if @rel.present? %>
+      <% else %>
+      <p class="user-email-actual">Your profile!</p>
+      <% end %>
+
+      <p>Followers: <%= @user.followers.count %></p>
+      <p>Following: <%= @user.following.count %></p>
+</div>
