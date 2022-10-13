@@ -12,7 +12,7 @@
     <p><%= @article.body %></p>
 
     <% if user_signed_in?  %>
-      <% if @article.owner == current_user.id %>
+      <% if @current_user_owner_article %> 
         <ul>
           <li><%= link_to "Edit", edit_article_path(@article) %></li>
           <li><%= link_to "Destroy", article_path(@article), data: {
