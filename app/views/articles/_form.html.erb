@@ -36,7 +36,7 @@
         </div>
 
         <div class="label-submit-article">
-          <% form.select :owner, [current_user.id] %>
+          <%= form.hidden_field :owner, value: current_user.id %>
           <%= form.submit %>
         </div>
         
