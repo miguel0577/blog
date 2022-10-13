@@ -10,6 +10,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    if user_signed_in?
+      @current_user_owner_article = true if @article.owner == current_user.id
+    end
   end
 
   def new
