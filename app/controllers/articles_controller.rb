@@ -2,7 +2,6 @@
 
 # Controller to show, add, edit, update and delete articles
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'a', password: '', except: %i[index show]
 
   def index
     @articles = Article.all
@@ -50,6 +49,6 @@ class ArticlesController < ApplicationController
   private
 
   def article_params
-    params.require(:article).permit(:title, :body, :status)
+    params.require(:article).permit(:title, :body, :status, :owner)
   end
 end

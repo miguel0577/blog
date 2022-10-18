@@ -1,17 +1,32 @@
-<h1><%= @article.title %></h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
 
-<p><%= @article.body %></p>
+  <body>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Destroy", article_path(@article), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %></li>
-</ul>
+    <h1><%= @article.title %></h1>
 
-<h2>Comments</h2>
-<%= render @article.comments %>
+    <% if user_signed_in?  %>
+      <% if @article.owner == current_user.id %>
+        <ul>
+          <li><%= link_to "Edit", edit_article_path(@article) %></li>
+          <li><%= link_to "Destroy", article_path(@article), data: {
+            turbo_method: :delete,
+                            turbo_confirm: "Are you sure?"
+                          } %></li>
+        </ul>    
+      <% end  %>
+    <% end  %>
 
-<h2>Add a comment:</h2>
-<%= render 'comments/form' %>
+    <h2>Comments</h2>
+    <%= render @article.comments %>
+
+    <h2>Add a comment:</h2>
+    <%= render 'comments/form' %>
+
+  </body>
+</html>

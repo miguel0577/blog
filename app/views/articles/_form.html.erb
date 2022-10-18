@@ -1,26 +1,47 @@
-<%= form_with model: article do |form| %>
-  <div>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
-    <% article.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
 
-  <div>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %><br>
-    <% article.errors.full_messages_for(:body).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-  </div>
+  <body>      
+    <main class="container" id="main">
 
-  <div>
-    <%= form.label :status %><br>
-    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-  </div>
+      <%= form_with model: article do |form| %>
+        <div class="label-tittle-article">
+          <%= form.label :title %><br>
+          <%= form.text_field :title, required: true, class: "form-control" %>
+          <% article.errors.full_messages_for(:title).each do |message| %>
+            <div class="invalid-feedback">
+              <%= message %> 
+            </div>
+          <% end %>
+        </div>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+        <div class="label-body-article">
+          <%= form.label :body %><br>
+          <%= form.text_area :body, required: true, class: "form-control" %><br>
+          <% article.errors.full_messages_for(:body).each do |message| %>
+            <div class="error-body-article">
+              <%= message %> 
+            </div>
+          <% end %>
+        </div>
+
+        <div class="label-select-article">
+          <%= form.label :status %><br>
+          <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
+        </div>
+
+        <div class="label-submit-article">
+          <% form.select :owner, [current_user.id] %>
+          <%= form.submit %>
+        </div>
+        
+      <% end %>         
+    </main>
+  </body>
+  <%= render "footer" %>
+</html>
