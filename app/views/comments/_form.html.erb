@@ -1,7 +1,7 @@
 <% if user_signed_in?  %>
   <% if (@rel.present? || @current_user_owner_article) %> 
     <div id="form">
-    <h4>Add a comment:</h4>
+    <h4 class="label-add-title">Add a comment:</h4>
       <div class="col">
         <%= form_with model: [ @article, @article.comments.build ] do |form| %>
 

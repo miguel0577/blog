@@ -110,6 +110,9 @@ main{
 
 #form{
   padding: 0 10vw;
+  .label-add-title{
+    padding-top: 5vh;
+  }
   .label-tittle-article-comment{
     padding-bottom: 5vh ;
   }
@@ -153,6 +156,7 @@ main{
 
 #comments{
   padding-top: 1vh;
+  border-top: 1px dashed rgb(165, 165, 165);
   .commenter{
     padding: 0;
   }
@@ -160,7 +164,6 @@ main{
     padding: 0;
   }
   .comment-delete{
-    border-bottom: 1px dashed rgb(165, 165, 165);
     padding-bottom: 1vh;
   }
 }

@@ -11,12 +11,14 @@
         <%= comment.body %>
       </div>
 
-      <div class="comment-delete">
-        <%= link_to "Destroy Comment", [comment.article, comment], data: {
-          turbo_method: :delete,
-                      turbo_confirm: "Are you sure?"
-                    }, class:"btn btn-danger button-destroy-comment" %>
-      </div>
+      <% if comment.commenter == current_user.email %>
+        <div class="comment-delete">
+          <%= link_to "Destroy Comment", [comment.article, comment], data: {
+            turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                      }, class:"btn btn-danger button-destroy-comment" %>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>
