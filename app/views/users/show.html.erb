@@ -4,8 +4,8 @@
       <p class="user-email"><%= @user.email %></p>
 
       <% unless @actual_current_user %>
-        <%= link_to "Follow", user_relationships_create_path(@user), method: :post, class: 'btn btn-success' unless @rel.present? %>
-        <%= link_to "Unfollow", relationships_destroy_path(@rel.id), method: :delete, class: 'btn btn-danger' if @rel.present? %>
+        <%= link_to "Follow", user_follows_create_path(@user), method: :post, class: 'btn btn-success' unless @rel.present? %>
+        <%= link_to "Unfollow", follows_destroy_path(@rel.id), method: :delete, class: 'btn btn-danger' if @rel.present? %>
       <% else %>
       <p class="user-email-actual">Your profile!</p>
       <% end %>

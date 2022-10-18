@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   
   
   resources :users do
-    get "relationships/create", to: "relationships#create"
+    get "follows/create", to: "follows#create"
   end
   
-  get "relationships/destroy", to: "relationships#destroy"
+  get "follows/destroy", to: "follows#destroy"
 
   resources :articles do
     resources :comments
