@@ -20,42 +20,56 @@ body{
 main{
   margin-top: 0;
   padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  
+  .show-users{
+    h4{
+      text-align: center;
+    }
+  }
 
   .label-tittle-article{
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
   }
   .error-body-article{
     color: #ff0000;
   }
 
   .label-select-article{
-    padding-bottom: 20px;
+    padding-bottom: 2vh;
   }
 }
 
-#new-link{
-  width: 200px;
-  height: 50px;
+#new-button{
+  width: 16vw;
+  height: 8vh;
   font-size: 20px;
   display: flex;
   align-items: center;
-  padding-left: 20px;
-}
-
-#log-button{
-  width: 120px;
-  height: 40px;
-  font-size: 20px;
-  margin-left: 15px;
+  margin-left: 10vw;
+  padding-left: 2vw;
 }
 
 #card-articles{
-  margin-top: 20px;
-  width: 700px;
-  display: flex;
+  width: 45vw;
+  margin-top: 2vw;
+  margin-left: 10vw;
   background-color: #10183a;
   border: 10px;
+  h5{
+    font-size: 25px;
+    color: #c2ab6c;
+  }
+}
+
+#card-users{
+  width: 25vw;
+  margin-top: 2vw;
+  margin-right: 10vw;
+  background-color: #10183a;
+  border-radius: 30px;
   h5{
     font-size: 25px;
     color: #c2ab6c;
