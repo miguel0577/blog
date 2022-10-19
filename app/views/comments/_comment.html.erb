@@ -11,7 +11,7 @@
         <%= comment.body %>
       </div>
 
-      <% if comment.commenter == current_user.email %>
+      <% if current_user_owner_comment? comment.commenter %>
         <div class="comment-delete">
           <%= link_to "Destroy Comment", [comment.article, comment], data: {
             turbo_method: :delete,

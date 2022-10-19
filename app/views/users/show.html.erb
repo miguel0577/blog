@@ -3,9 +3,9 @@
 
       <p class="user-email"><%= @user.email %></p>
 
-      <% unless @actual_current_user %>
-        <%= link_to "Follow", user_follows_create_path(@user), method: :post, class: 'btn btn-success' unless @rel.present? %>
-        <%= link_to "Unfollow", follows_destroy_path(@rel.id), method: :delete, class: 'btn btn-danger' if @rel.present? %>
+      <% unless actual_current_user? %>
+        <%= link_to "Follow",  user_follows_follow_path(@user), method: :post, class: 'btn btn-success' unless current_user_follower.present? %>
+        <%= link_to "Unfollow", follows_unfollow_path(current_user_follower.id), method: :delete, class: 'btn btn-danger' if current_user_follower.present? %>
       <% else %>
       <p class="user-email-actual">Your profile!</p>
       <% end %>

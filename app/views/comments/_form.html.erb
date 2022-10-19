@@ -1,5 +1,5 @@
 <% if user_signed_in?  %>
-  <% if (@rel.present? || @current_user_owner_article) %> 
+  <% if (is_current_user_follower? || current_user_owner_article?) %> 
     <div id="form">
     <h4 class="label-add-title">Add a comment:</h4>
       <div class="col">
@@ -29,7 +29,11 @@
     </div>
   <% else %>
     <div class="row-center">
-      <h6>Follow <%= @user.email %> to add a comment</h6>
+      <h4>Follow <%= @user.email %> to add a comment</h4>
     </div>
   <% end %>
+<% else %>
+    <div class="row-center">
+      <h4>Sign Up to add your comments!</h4>
+    </div>
 <% end %>
