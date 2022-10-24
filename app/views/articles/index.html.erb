@@ -1,70 +1,81 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Blog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <head>
 
   <body>
-    <header class="container-xxl text-center" id="header">
+    <header>
+      <div class="row-space-between">
+        <div class="col-6 d-flex justify-content-start">
+          <%if user_signed_in? %>
+            <%= link_to current_user.email, @user_now %>
+          <% end %>
+        </div>
 
-      <div class="row log-option">
-        <%if user_signed_in? %>
-          <a class="btn btn-outline-primary" id="log-button" href="<%= destroy_user_session_path %>">Sign Out</a>
-        <% else %>
-          <a class="btn btn-outline-primary" id="log-button" href="<%= new_user_session_path %>">Login</a>
-          <a class="btn btn-outline-primary" id="log-button" href="<%= new_user_registration_path %>">Sign Up!</a>
-        <% end %>
+        <div class="col-6 d-flex justify-content-end align-items-center">
+          <%if user_signed_in? %>
+            <a class="btn btn-danger profile-log-button" href="<%= destroy_user_session_path %>">Sign Out</a>
+          <% else %>
+            <a class="btn btn-info profile-log-button" href="<%= new_user_session_path %>">Login</a>
+            <a class="btn btn-primary profile-log-button" href="<%= new_user_registration_path %>">Sign Up!</a>
+          <% end %>
+        </div>
       </div>
-
-      <div class="row">
-        <h1>New awesome blog!</h1>
-      </div>
-
-      <div class="row">
-          <h2>Articles</h2>
-          <p>
-            Our blog has <%= Article.public_count %> articles and counting!
-          </p>
-      </div>
-
     </header>
       
-    <main id="main">
-
-      <div class="show-articles">
-        <%if user_signed_in? %>
-          <a class="btn btn-outline-primary" id="new-button" href="<%= new_article_path %>">New article</a>
-        <% end %>
-  
-        <% @articles.each do |article| %>
-          <% unless article.archived? %>
-            <div class="card" id="card-articles" >
-              <div class="card-body">
-                <h5 class="card-title"> <%= article.title %> </h5>
-                <p class="card-text"> <%= article.body %> </p>
-                <%= link_to "Continue reading...", article %>
-              </div>
-            </div>     
-          <% end %>
-        <% end %>
+    <main>
+      <div class="row-center">
+        <p class="notice text-secondary"><%= notice %></p>
+        <p class="alert text-danger"><%= alert %></p>
       </div>
 
-        <%if user_signed_in? %>
-          <div class="show-users">
-          <h4>Bloggers!</h4>
-            <% @users.each do |user| %>
-              <div class="card" id="card-users" >
-                <div class="card-body">
-                  <h5 class="card-title"> <%= user.email %> </h5>
-                </div>
-              </div>     
+      <div class="row-center">
+          <p class="title" href="">RUBY ON RAILS BLOG</p>
+      </div>
+
+      <div class="row-center">
+        <div class="col-7 articles">
+          <div class="row new-article">
+            <% if user_signed_in? %>
+              <a class="btn btn-success new-button" href="<%= new_article_path %>">New article</a>
+            <% end %>
+            <% @articles.each do |article| %>
+              <% unless article.archived? %>
+                <div class="card card-articles">
+                  <div class="card-body">
+                    <h2 class="card-title"> <%= article.title %> </h2>
+                    <p class="card-text"> <%= article.body %> </p>
+                    <%= link_to "Continue reading...", article %>
+                  </div>
+                </div>     
+              <% end %>
             <% end %>
           </div>
-        <% end %>
+          <div class="row-center p-count">
+            <p> This blog has <%= Article.public_count %> articles and counting! </p>
+          </div>
+        </div>
+
+        <div class="col-5 users">
+          <div class="show-users">
+            <%if user_signed_in? %>
+              <h4>Bloggers!</h4>
+              <% @users.each do |user| %>
+                <div class="card card-users">
+                  <div class="card-body">
+                    <h5 class="card-title"> <%= user.email %> </h5>
+                    <%= link_to "View Profile", user , class: "btn btn-outline-warning" %>
+                  </div>
+                </div>     
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
     </main>
+    <%= render "footer" %>
   </body>
-  <%= render "footer" %>
 </html>

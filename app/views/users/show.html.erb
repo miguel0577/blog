@@ -1,0 +1,16 @@
+<div id="show-user-profile">
+      <img src="https://img.icons8.com/external-sbts2018-outline-sbts2018/100/000000/external-profile-seo-4.-1-sbts2018-outline-sbts2018.png"/>
+
+      <p class="user-email"><%= @user.email %></p>
+
+      <% unless actual_current_user? %>
+        <%= link_to "Follow",  user_follows_follow_path(@user), method: :post, class: 'btn btn-success' unless current_user_follower.present? %>
+        <%= link_to "Unfollow", follows_unfollow_path(current_user_follower.id), method: :delete, class: 'btn btn-danger' if current_user_follower.present? %>
+      <% else %>
+      <p class="user-email-actual">Your profile!</p>
+      <% end %>
+
+      <p>Followers: <%= @user.followers.count %></p>
+      <p>Following: <%= @user.following.count %></p>
+</div>
+<%= render "articles/footer" %>

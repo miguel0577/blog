@@ -2,17 +2,18 @@
 
 # Controller to show, add, edit, update and delete articles
 class ArticlesController < ApplicationController
-
+  
   def index
     @articles = Article.all
     @users = User.all
+    if user_signed_in?
+      @user_now = User.find(current_user.id)
+    end
   end
-
+  
   def show
     @article = Article.find(params[:id])
-    if user_signed_in?
-      @current_user_owner_article = true if @article.owner == current_user.id
-    end
+    @user = User.find(@article.owner)
   end
 
   def new

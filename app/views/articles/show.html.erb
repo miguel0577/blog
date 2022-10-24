@@ -1,32 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Blog</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  <head>
+<main>
+  <div id="show">
+    <div class="col">
+      <div class="show-article">
+        <h1><%= @article.title %></h1>
+        <p><%= @article.body %></p>
+      </div>
 
-  <body>
+      <div class="row info-article">
+        <p class="row article-created-at">Author: <%= @user.email %></p>
+        <p class="row article-owner">Created at: <%= @article.created_at %></p>
+      </div>
 
-    <h1><%= @article.title %></h1>
-    <p><%= @article.body %></p>
-
-    <% if user_signed_in?  %>
-      <% if @current_user_owner_article %> 
-        <ul>
-          <li><%= link_to "Edit", edit_article_path(@article) %></li>
-          <li><%= link_to "Destroy", article_path(@article), data: {
-            turbo_method: :delete,
-                            turbo_confirm: "Are you sure?"
-                          } %></li>
-        </ul>    
-      <% end  %>
-    <% end  %>
-
-    <h4>Comments</h4>
-    <%= render @article.comments %>
-
-    <%= render 'comments/form' %>
-
-  </body>
-</html>
+      <div class="buttons-modify-article">
+        <% if user_signed_in?  %>
+          <% if current_user_owner_article? %> 
+              <%= link_to "Edit", edit_article_path(@article), class:"btn btn-warning button-edit-article" %>
+              <%= link_to "Destroy", article_path(@article), data: {
+                turbo_method: :delete,
+                                turbo_confirm: "Are you sure?"
+                              }, class:"btn btn-danger button-destroy-article" %>   
+              <% end  %>
+        <% end  %>
+      </div>
+      <h4>Comments</h4>
+      <%= render @article.comments %>
+    </div>
+  </div>
+  <%= render 'comments/form' %>
+</main>
+<%= render "footer" %>
